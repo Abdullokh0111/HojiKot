@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foydalanuvchilar Ro'yxati</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Foydalanuvchilar Ro'yxati</h1>
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>Ism</th>
+        <th>Email</th>
+        <th>Telefon</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(function (response) {
+        const users = response.data;
+
+        const tableBody = document.getElementById('usersTable').getElementsByTagName('tbody')[0];
+
+        users.forEach(user => {
+          const row = tableBody.insertRow();
+          row.insertCell(0).textContent = user.name;
+          row.insertCell(1).textContent = user.email;
+          row.insertCell(2).textContent = user.phone;
+        });
+      })
+      .catch(function (error) {
+        console.log('APIga ulanishda xato:', error);
+      });
+  </script>
+</body>
+</html>

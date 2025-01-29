@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+
+<body>
+    <form id="form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email">
+
+        <label for="parol">Parol:</label>
+        <input type="password" id="password" name="password" placeholder="Parolni kiriting:" required>
+
+        <input type="submit" value="jonatish">
+    </form>
+
+</body>
+<script>
+    const form = document.getElementById("form");
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const parol = document.getElementById('password').value;
+
+        console.log(`Name: ${name}, Email: ${email}, Password: Kiritildi`);
+    });
+</script>
+
+</html>
